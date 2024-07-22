@@ -30,6 +30,7 @@ dependencies:
   dio: ^5.5.0+1
   flutter:
     sdk: flutter
+  flutter_bloc: ^8.1.6
   flutter_modular: ^6.3.4
   result_dart: ^1.1.1
 
