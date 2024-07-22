@@ -1,21 +1,14 @@
 import 'package:flutter/material.dart';
 
+import 'package:flutter_modular/flutter_modular.dart';
+import 'package:mottu_marvel/app_module.dart';
+import 'package:mottu_marvel/app_widget.dart';
+
 void main() {
-  runApp(const MarvelApp());
-}
-
-class MarvelApp extends StatelessWidget {
-  const MarvelApp({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Marvel App',
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.red),
-        useMaterial3: true,
-      ),
-      home: const Scaffold(),
-    );
-  }
+  runApp(
+    ModularApp(
+      module: AppModule(),
+      child: const AppWidget(),
+    ),
+  );
 }
