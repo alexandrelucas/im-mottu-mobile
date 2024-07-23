@@ -17,6 +17,7 @@
             "cwd": "mottu_marvel",
             "request": "launch",
             "type": "dart",
+            "args": ["--dart-define-from-file=env.json"],
             "flutterMode": "profile"
         },
         {
@@ -24,6 +25,7 @@
             "cwd": "mottu_marvel",
             "request": "launch",
             "type": "dart",
+            "args": ["--dart-define-from-file=env.json"],
             "flutterMode": "release"
         }
     ]
