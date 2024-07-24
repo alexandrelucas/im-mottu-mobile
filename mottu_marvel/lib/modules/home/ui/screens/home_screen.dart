@@ -59,7 +59,7 @@ class _HomeScreenState extends State<HomeScreen> {
         leadingWidth: 100,
         leading: Padding(
           padding: const EdgeInsets.only(left: 24.0),
-          child: Image.asset(AppAssets.marvelLogo),
+          child: Hero(tag: 'logo', child: Image.asset(AppAssets.marvelLogo)),
         ),
         actions: [
           IconButton(
