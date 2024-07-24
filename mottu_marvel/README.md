@@ -53,3 +53,4 @@ Projeto baseado nos princípios da arquitetura limpa com a utilização do BLOC 
 ![](screenshots/home.png)
 ![](screenshots/filter.png)
 ![](screenshots/character_detail.png)
+![](screenshots/not_found.png)
