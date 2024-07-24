@@ -2,6 +2,8 @@ import 'package:flutter_modular/flutter_modular.dart';
 import 'package:mottu_marvel/app_module.dart';
 import 'package:mottu_marvel/modules/home/data/datasources/character_datasource.dart';
 import 'package:mottu_marvel/modules/home/data/datasources/character_datasource_impl.dart';
+import 'package:mottu_marvel/modules/home/data/datasources/character_local_datasource.dart';
+import 'package:mottu_marvel/modules/home/data/datasources/character_local_datasource_impl.dart';
 import 'package:mottu_marvel/modules/home/data/repositories/characters_repository_impl.dart';
 import 'package:mottu_marvel/modules/home/interactor/blocs/character_bloc.dart';
 import 'package:mottu_marvel/modules/home/interactor/repositories/characters_repository.dart';
@@ -19,6 +21,7 @@ class HomeModule extends Module {
   @override
   void binds(Injector i) {
     i.add<CharacterDatasource>(CharacterDatasourceImpl.new);
+    i.add<CharacterLocalDatasource>(CharacterLocalDatasourceImpl.new);
     i.add<CharactersRepository>(CharactersRepositoryImpl.new);
     i.addSingleton<CharacterBloc>(
       CharacterBloc.new,
