@@ -42,3 +42,14 @@ Projeto baseado nos princípios da arquitetura limpa com a utilização do BLOC 
 - [x] Ação de clique nos cards da listagem e exibir os detalhes (imagem, nome, descrição e personagens relacionados);
 - [x] Ação de clique nos personagens relacionados e exibir os detalhes (imagem, nome, descrição e personagens relacionados);
 - [ ] Criar testes de unidade das regras de negócio;
+
+---
+
+# Screenshots do projeto
+
+![screenshot](screenshots/macos.png)
+
+![](screenshots/splash.png)
+![](screenshots/home.png)
+![](screenshots/filter.png)
+![](screenshots/character_detail.png)
