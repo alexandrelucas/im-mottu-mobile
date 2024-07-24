@@ -25,6 +25,8 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   late final StreamSubscription blocStream;
+  late final ScrollController scrollController;
+  final filter = ValueNotifier(FilterCharacterListDTO(offset: 0));
 
   @override
   void initState() {
@@ -32,9 +34,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
     context.read<CharacterBloc>().add(
           FetchCharacterListEvent(
-            FilterCharacterListDTO(
-              limit: 20,
-            ),
+            filter.value,
           ),
         );
 
@@ -43,12 +43,38 @@ class _HomeScreenState extends State<HomeScreen> {
       if (state is HomeErrorState) {
         context.showSnackMessage(state.message);
       }
+
+      if (state is HomeGridLoadingState) {
+        context.showSnackMessage('Fetching more results...');
+      }
+
+      if (state is HomeSuccessfulFetchedState) {
+        context.showSnackMessage('Data fetched successfully!');
+      }
+    });
+
+    scrollController = ScrollController();
+
+    scrollController.addListener(() {
+      if (scrollController.position.pixels ==
+          scrollController.position.maxScrollExtent) {
+        // get more
+
+        if (context.read<CharacterBloc>().state is! HomeGridLoadingState) {
+          filter.value = filter.value
+              .copyWith(offset: filter.value.offset + filter.value.limit);
+          context
+              .read<CharacterBloc>()
+              .add(FetchMoreCharacterListEvent(filter.value));
+        }
+      }
     });
   }
 
   @override
   void dispose() {
     blocStream.cancel();
+    filter.dispose();
     super.dispose();
   }
 
@@ -71,6 +97,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   }) as FilterCharacterListDTO?;
 
               if (context.mounted && filters != null) {
+                filter.value = filters;
                 context
                     .read<CharacterBloc>()
                     .add(FetchCharacterListEvent(filters));
@@ -131,13 +158,14 @@ class _HomeScreenState extends State<HomeScreen> {
 
             if (state is HomeSuccessfulFetchedState) {
               return GridView.builder(
+                controller: scrollController,
                 gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                   crossAxisCount: 2,
                   mainAxisSpacing: 16.0,
                   crossAxisSpacing: 16.0,
                 ),
-                padding: const EdgeInsets.all(16.0), // padding around the grid
-                itemCount: state.characters.length, // total number of items
+                padding: const EdgeInsets.all(16.0),
+                itemCount: state.characters.length,
                 itemBuilder: (context, index) {
                   final listOfCharaters = state.characters;
                   final character = listOfCharaters[index];
@@ -149,21 +177,44 @@ class _HomeScreenState extends State<HomeScreen> {
                 },
               );
             }
+            if (state is HomeGridLoadingState) {
+              return GridView.builder(
+                controller: scrollController,
+                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                  crossAxisCount: 2,
+                  mainAxisSpacing: 16.0,
+                  crossAxisSpacing: 16.0,
+                ),
+                padding: const EdgeInsets.all(16.0),
+                itemCount: state.characters.length,
+                itemBuilder: (context, index) {
+                  final listOfCharaters = state.characters;
+                  final character = listOfCharaters[index];
+
+                  return GridCharacterCardWidget(
+                    character: character,
+                    relationatedCharacters: listOfCharaters,
+                  );
+                },
+              );
+            }
+
             return Center(
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   MarvelButtonWidget(
-                      onTap: () {
-                        context.read<CharacterBloc>().add(
-                              FetchCharacterListEvent(
-                                FilterCharacterListDTO(
-                                  limit: 20,
-                                ),
+                    onTap: () {
+                      context.read<CharacterBloc>().add(
+                            FetchCharacterListEvent(
+                              FilterCharacterListDTO(
+                                offset: 0,
                               ),
-                            );
-                      },
-                      text: 'Try to fetch data.')
+                            ),
+                          );
+                    },
+                    text: 'Try to fetch data.',
+                  )
                 ],
               ),
             );

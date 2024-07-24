@@ -1,3 +1,4 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 enum FilterCharacterOrderBy {
   nameAsc("name"),
   modifiedAsc("modified");
@@ -19,8 +20,8 @@ class FilterCharacterListDTO {
   FilterCharacterListDTO({
     this.name,
     this.nameStartsWith,
-    this.limit = 20,
-    this.offset = 0,
+    this.limit = 15,
+    required this.offset,
     this.orderBy = FilterCharacterOrderBy.nameAsc,
   });
 
@@ -37,5 +38,21 @@ class FilterCharacterListDTO {
       'offset': offset,
       if (orderBy != FilterCharacterOrderBy.nameAsc) 'orderBy': orderBy.value,
     };
+  }
+
+  FilterCharacterListDTO copyWith({
+    String? name,
+    String? nameStartsWith,
+    int? limit,
+    int? offset,
+    FilterCharacterOrderBy? orderBy,
+  }) {
+    return FilterCharacterListDTO(
+      name: name ?? this.name,
+      nameStartsWith: nameStartsWith ?? this.nameStartsWith,
+      limit: limit ?? this.limit,
+      offset: offset ?? this.offset,
+      orderBy: orderBy ?? this.orderBy,
+    );
   }
 }

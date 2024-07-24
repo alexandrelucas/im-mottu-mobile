@@ -24,6 +24,11 @@ class HomeLoadingState implements HomeState {
   const HomeLoadingState();
 }
 
+class HomeGridLoadingState implements HomeState {
+  final List<CharacterMarvelEntity> characters;
+  const HomeGridLoadingState(this.characters);
+}
+
 class HomeErrorState implements HomeState {
   final String message;
   const HomeErrorState(this.message);
