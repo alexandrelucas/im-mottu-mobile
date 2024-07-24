@@ -22,6 +22,10 @@ class CharactersRepositoryImpl implements CharactersRepository {
       return const HomeErrorState("Erro ao capturar a lista de personagens");
     }
 
+    if (characterList.isEmpty) {
+      return const HomeCharacterListNoResultsState();
+    }
+
     return HomeSuccessfulFetchedState(characters: characterList);
   }
 }

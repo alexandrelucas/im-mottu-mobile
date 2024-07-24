@@ -36,3 +36,7 @@ class HomeSuccessfulFetchedState implements HomeState {
     required this.characters,
   });
 }
+
+class HomeCharacterListNoResultsState implements HomeState {
+  const HomeCharacterListNoResultsState();
+}

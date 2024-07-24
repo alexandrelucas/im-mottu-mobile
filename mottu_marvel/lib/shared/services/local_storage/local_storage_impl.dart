@@ -1,7 +1,7 @@
 import 'package:mottu_marvel/shared/services/local_storage/local_storage_service.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-class LocalStorage implements LocalStorageService {
+class LocalStorageImpl implements LocalStorageService {
   @override
   Future<bool> contains(String key) async {
     final sharedPreferences = await SharedPreferences.getInstance();
