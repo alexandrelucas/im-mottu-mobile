@@ -1,8 +1,8 @@
 enum FilterCharacterOrderBy {
   nameAsc("name"),
-  modifiedAsc("modified"),
-  nameDesc("-name"),
-  modifiedDesc("-modified");
+  modifiedAsc("modified");
+  // nameDesc("-name"),
+  // modifiedDesc("-modified");
 
   final String value;
 
@@ -19,7 +19,7 @@ class FilterCharacterListDTO {
   FilterCharacterListDTO({
     this.name,
     this.nameStartsWith,
-    this.limit = 1,
+    this.limit = 20,
     this.offset = 0,
     this.orderBy = FilterCharacterOrderBy.nameAsc,
   });

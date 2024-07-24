@@ -33,8 +33,13 @@ class HomeModule extends Module {
   @override
   void routes(RouteManager r) {
     r.child(HomeScreen.route, child: (context) => const HomeScreen());
-    r.child(CharacterDetailScreen.route,
-        child: (context) => CharacterDetailScreen(character: r.args.data));
+    r.child(
+      CharacterDetailScreen.route,
+      child: (context) => CharacterDetailScreen(
+        character: r.args.data['character'],
+        relationatedCharacters: r.args.data['list'],
+      ),
+    );
     super.routes(r);
   }
 }

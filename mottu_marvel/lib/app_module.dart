@@ -4,12 +4,15 @@ import 'package:mottu_marvel/modules/home/home_module.dart';
 import 'package:mottu_marvel/shared/services/http/dio_factory.dart';
 import 'package:mottu_marvel/shared/services/http/dio_http_client_service_impl.dart';
 import 'package:mottu_marvel/shared/services/http/http_client_service.dart';
+import 'package:mottu_marvel/shared/services/local_storage/local_storage_impl.dart';
+import 'package:mottu_marvel/shared/services/local_storage/local_storage_service.dart';
 
 class AppModule extends Module {
   @override
   void exportedBinds(Injector i) {
     i.add(createDioFactory);
     i.addSingleton<HttpClientService>(DioHttpClientServiceImpl.new);
+    i.addSingleton<LocalStorageService>(LocalStorageImpl.new);
     super.exportedBinds(i);
   }
 
