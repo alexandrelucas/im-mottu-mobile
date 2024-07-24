@@ -11,10 +11,15 @@ class DioHttpClientServiceImpl implements HttpClientService {
   );
 
   @override
-  Future get(String url, {Map<String, dynamic>? headers}) async {
+  Future get(
+    String url, {
+    Map<String, dynamic>? headers,
+    Map<String, dynamic>? queryParameters,
+  }) async {
     try {
       return await dio.get(
         url,
+        queryParameters: queryParameters,
         options: Options(headers: headers),
       );
     } on DioException catch (e) {

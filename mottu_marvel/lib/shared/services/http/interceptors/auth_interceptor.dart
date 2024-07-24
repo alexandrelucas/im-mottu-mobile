@@ -10,11 +10,15 @@ class AuthInterceptor extends Interceptor {
 
     final hash = textToMd5("$timestamp$privateKey$apiKey");
 
-    final updatedOptions = options.copyWith(queryParameters: {
+    final queryParameters = options.queryParameters;
+
+    queryParameters.addAll({
       "apikey": apiKey,
       "ts": timestamp,
       "hash": hash,
     });
+
+    final updatedOptions = options.copyWith(queryParameters: queryParameters);
     handler.next(updatedOptions);
   }
 }
