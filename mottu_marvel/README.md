@@ -49,8 +49,10 @@ Projeto baseado nos princípios da arquitetura limpa com a utilização do BLOC 
 
 ![screenshot](screenshots/macos.png)
 
-![](screenshots/splash.png)
-![](screenshots/home.png)
-![](screenshots/filter.png)
-![](screenshots/character_detail.png)
-![](screenshots/not_found.png)
+<p>
+  <img src="https://github.com/alexandrelucas/im-mottu-mobile/blob/7f33d899191e173c59babc573ce4e057e33f2c7d/mottu_marvel/screenshots/splash.png" width="198"/>
+<img src="https://github.com/alexandrelucas/im-mottu-mobile/blob/7f33d899191e173c59babc573ce4e057e33f2c7d/mottu_marvel/screenshots/home.png" width="198"/>
+<img src="https://github.com/alexandrelucas/im-mottu-mobile/blob/7f33d899191e173c59babc573ce4e057e33f2c7d/mottu_marvel/screenshots/filter.png" width="198"/>
+  <img src="https://github.com/alexandrelucas/im-mottu-mobile/blob/7f33d899191e173c59babc573ce4e057e33f2c7d/mottu_marvel/screenshots/character_detail.png" width="198"/>
+    <img src="https://github.com/alexandrelucas/im-mottu-mobile/blob/7f33d899191e173c59babc573ce4e057e33f2c7d/mottu_marvel/screenshots/not_found.png" width="198"/>
+</p>
