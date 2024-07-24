@@ -13,7 +13,7 @@ void main() async {
 
   // Initialize Firebase
   await Firebase.initializeApp(
-    name: 'com.mottu.marvel.mottu_marvel',
+    name: 'mottu_marvel',
     options: DefaultFirebaseOptions.currentPlatform,
   );
 
