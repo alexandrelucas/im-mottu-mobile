@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import 'package:flutter_modular/flutter_modular.dart';
 import 'package:mottu_marvel/constants/app_colors.dart';
 import 'package:mottu_marvel/modules/home/interactor/entities/character_entity.dart';
 
@@ -82,13 +83,13 @@ class CharacterDetailScreen extends StatelessWidget {
                         ),
                       ),
                       child: InkWell(
-                        // onTap: () => Modular.to.pushNamed(
-                        //   "character",
-                        //   arguments: {
-                        //     'character': character,
-                        //     'list': relationatedCharacters,
-                        //   },
-                        // ),
+                        onTap: () => Modular.to.pushNamed(
+                          "character",
+                          arguments: {
+                            'character': character,
+                            'list': relationatedCharacters,
+                          },
+                        ),
                         child: Stack(
                           fit: StackFit.expand,
                           children: [

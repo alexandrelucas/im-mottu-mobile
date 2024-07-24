@@ -8,3 +8,8 @@ class FetchCharacterListEvent implements CharacterListEvent {
   final FilterCharacterListDTO filters;
   const FetchCharacterListEvent(this.filters);
 }
+
+class FetchMoreCharacterListEvent implements CharacterListEvent {
+  final FilterCharacterListDTO filters;
+  const FetchMoreCharacterListEvent(this.filters);
+}

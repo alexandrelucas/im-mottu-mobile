@@ -69,6 +69,7 @@ class _FilterModalWidgetState extends State<FilterModalWidget> {
                 final name = nameController.text;
                 Modular.to.pop(
                   FilterCharacterListDTO(
+                    offset: 0,
                     nameStartsWith: name.isNotEmpty ? name : null,
                     orderBy: FilterCharacterOrderBy.values
                         .firstWhere((filter) => filter.value == orderBy),
