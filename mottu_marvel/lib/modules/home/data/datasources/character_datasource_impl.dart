@@ -24,7 +24,8 @@ class CharacterDatasourceImpl implements CharacterDatasource {
           await httpClient.get('/characters', queryParameters: filters.toMap());
 
       // Store the request into LocalStorage
-      const urlPath = '${const String.fromEnvironment('BASE_URL')}/characters';
+      final urlPath =
+          '${const String.fromEnvironment('BASE_URL')}/characters?$filters';
       final responseData = response.data;
 
       final encodedRequest = jsonEncode(responseData);

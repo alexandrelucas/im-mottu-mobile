@@ -27,15 +27,19 @@ class FilterCharacterListDTO {
 
   @override
   String toString() {
-    return "limit=$limit&offset=$offset";
+    final queryString = toMap().entries.map((entry) {
+      return '${entry.key}=${Uri.encodeComponent(entry.value)}';
+    }).join('&');
+
+    return queryString;
   }
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       if (name != null) 'name': name,
       if (nameStartsWith != null) 'nameStartsWith': nameStartsWith,
-      'limit': limit,
-      'offset': offset,
+      'limit': limit.toString(),
+      'offset': offset.toString(),
       if (orderBy != FilterCharacterOrderBy.nameAsc) 'orderBy': orderBy.value,
     };
   }
